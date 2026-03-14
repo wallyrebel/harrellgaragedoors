@@ -1307,6 +1307,10 @@ ul {
         display: flex;
     }
 
+    .hero {
+        padding-top: 80px;
+    }
+
     .hero h1 {
         font-size: clamp(2rem, 8vw, 3rem);
     }
