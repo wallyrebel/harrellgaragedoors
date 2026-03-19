@@ -231,8 +231,11 @@ ul {
 }
 
 .nav-logo-img {
-    height: 32px;
-    width: auto;
+    height: 32px !important;
+    max-height: 32px !important;
+    width: auto !important;
+    max-width: 150px !important;
+    object-fit: contain;
     border-radius: 4px;
 }
 
