@@ -240,8 +240,10 @@ ul {
 }
 
 .footer-logo-img {
-    height: 60px;
+    height: 110px;
     width: auto;
+    max-width: 300px;
+    object-fit: contain;
     border-radius: 6px;
 }
 
