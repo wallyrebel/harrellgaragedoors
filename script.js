@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitBtn = document.getElementById('form-submit');
 
     if (form) {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             // Basic validation
@@ -97,17 +97,44 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             submitBtn.disabled = true;
 
-            // Simulate form submission 
-            setTimeout(() => {
-                form.innerHTML = `
-                    <div class="form-success show">
-                        <div style="font-size:3rem;margin-bottom:16px">✓</div>
-                        <h3>Thank You!</h3>
-                        <p>We've received your request. Our team will contact you shortly to discuss your garage door needs.</p>
-                        <p style="margin-top:16px"><a href="tel:6622230748" style="color:var(--color-accent);font-weight:600">Or call us now: (662) 223-0748</a></p>
-                    </div>
-                `;
-            }, 1500);
+            // Submit using Web3Forms
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                });
+
+                const jsonResponse = await response.json();
+
+                if (response.status == 200) {
+                    form.innerHTML = `
+                        <div class="form-success show">
+                            <div style="font-size:3rem;margin-bottom:16px;color:#4ade80">✓</div>
+                            <h3>Thank You!</h3>
+                            <p>We've received your request. Our team will contact you shortly to discuss your garage door needs.</p>
+                            <p style="margin-top:16px"><a href="tel:6622230748" style="color:var(--color-accent);font-weight:600">Or call us now: (662) 223-0748</a></p>
+                        </div>
+                    `;
+                } else {
+                    console.log(response);
+                    submitBtn.innerHTML = 'Send Request';
+                    submitBtn.disabled = false;
+                    alert("Something went wrong! Please try calling us instead.");
+                }
+            } catch (error) {
+                console.log(error);
+                submitBtn.innerHTML = 'Send Request';
+                submitBtn.disabled = false;
+                alert("Something went wrong! Please try calling us instead.");
+            }
         });
     }
 
