@@ -228,7 +228,18 @@ ul {
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+}
+
+.nav-logo-img {
+    height: 50px;
+    width: auto;
+    border-radius: 6px;
+}
+
+.footer-logo-img {
+    height: 60px;
+    width: auto;
+    border-radius: 6px;
 }
 
 .logo-icon {
