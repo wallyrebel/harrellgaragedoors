@@ -1396,3 +1396,66 @@ ul {
         gap: 12px;
     }
 }
+
+/* Local service content and accessible navigation. */
+:root { --color-text-muted: #a9a9bf; }
+html { scroll-padding-top: 100px; }
+[data-animate] { opacity: 1; transform: none; }
+.skip-link { position: fixed; top: -100px; left: 16px; z-index: 2000; padding: 12px 20px; background: #fff; color: #151528; }
+.skip-link:focus { top: 12px; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid #f0932b; outline-offset: 5px; }
+.btn-primary, .nav-links .nav-cta { color: #151528 !important; }
+.hero { padding: 120px 0 90px; }
+.hero-content { max-width: 960px; }
+.hero-subtitle { max-width: 720px; }
+.stat-number { font-size: clamp(1.1rem, 2.5vw, 1.8rem); }
+.local-section { padding: 80px 0; }
+.faq-section { background: var(--color-bg-secondary); }
+.narrow { max-width: 880px; }
+.local-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.info-card { padding: 28px; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-bg-secondary); }
+.info-card h3, .info-card h2 { font-family: var(--font-heading); line-height: 1.3; margin-bottom: 16px; }
+.info-card p { color: var(--color-text-secondary); margin-bottom: 20px; }
+.text-link, .detail-copy a, details a { color: var(--color-accent-light); text-decoration: underline; text-underline-offset: 4px; }
+.text-link { display: inline-block; overflow-wrap: anywhere; }
+details { border-bottom: 1px solid var(--color-border); padding: 22px 0; }
+summary { font-weight: 600; cursor: pointer; padding-right: 12px; }
+details p { margin-top: 14px; color: var(--color-text-secondary); }
+.contact-actions { display: flex; flex-wrap: wrap; gap: 16px; margin: 24px 0; }
+.contact-form p { color: var(--color-text-secondary); }
+.contact-note { font-size: .9rem; }
+.location-section { padding: 36px 0; text-align: center; background: var(--color-bg-secondary); }
+.detail-page .navbar { background: rgba(15, 15, 26, .97); border-bottom: 1px solid var(--color-border); }
+.detail-main { padding-top: 120px; padding-bottom: 80px; }
+.breadcrumbs { margin-bottom: 28px; color: var(--color-text-secondary); font-size: .9rem; }
+.breadcrumbs a { text-decoration: underline; }
+.detail-header { max-width: 920px; margin-bottom: 52px; }
+.detail-header h1, .detail-main > h1 { font-family: var(--font-heading); font-size: clamp(2.1rem, 5vw, 3.6rem); line-height: 1.12; margin-bottom: 24px; }
+.detail-header > p { max-width: 820px; color: var(--color-text-secondary); font-size: 1.15rem; }
+.detail-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+.detail-copy section { margin-bottom: 36px; }
+.detail-copy h2 { font-family: var(--font-heading); line-height: 1.25; font-size: 1.6rem; margin-bottom: 18px; }
+.detail-copy p, .detail-copy ul { margin-bottom: 18px; color: var(--color-text-secondary); }
+.detail-copy ul { list-style: disc; padding-left: 24px; }
+.detail-copy li { margin-bottom: 8px; }
+.related-links { display: grid; gap: 14px; margin-bottom: 28px; }
+.related-links a { text-decoration: underline; text-underline-offset: 4px; }
+.gallery-item { cursor: default; }
+.gallery-overlay { opacity: 1; }
+@media (max-width: 900px) { .local-grid, .detail-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) {
+    .hero-scroll { display: none; }
+    .nav-links.active { overflow-y: auto; padding: 80px 24px 24px; }
+    .detail-main { padding-top: 100px; }
+    .contact-actions .btn { justify-content: center; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+@media (scripting: none) and (max-width: 768px) {
+    .navbar { position: relative; background: var(--color-bg-primary); }
+    .nav-container { display: block; }
+    .navbar .nav-links { display: flex; position: static; flex-direction: row; flex-wrap: wrap; gap: 16px; margin-top: 16px; }
+    .navbar .hamburger { display: none; }
+}
